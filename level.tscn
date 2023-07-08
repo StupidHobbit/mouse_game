@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://df68hmter8bou"]
+[gd_scene load_steps=8 format=3 uid="uid://df68hmter8bou"]
 
 [ext_resource type="PackedScene" uid="uid://b60xfwxfn273c" path="res://maze.tscn" id="1_onbyt"]
 [ext_resource type="PackedScene" uid="uid://80sj7wsfglgg" path="res://navigation.tscn" id="2_5kwwn"]
-[ext_resource type="PackedScene" uid="uid://cn88ok686ledh" path="res://mouse.tscn" id="3_xlk32"]
+[ext_resource type="PackedScene" uid="uid://oxttxaxcik1v" path="res://mice.tscn" id="3_2yd4m"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="4_fjgng"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpgn7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,13 +28,17 @@ shadow_enabled = true
 
 [node name="maze" parent="." instance=ExtResource("1_onbyt")]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5, 9.94, 5)
-
 [node name="navigation" parent="." node_paths=PackedStringArray("maze") instance=ExtResource("2_5kwwn")]
 maze = NodePath("../maze")
 
-[node name="mouse" parent="." node_paths=PackedStringArray("navigation") instance=ExtResource("3_xlk32")]
-transform = Transform3D(1, 0, 0, 0, 0.00347323, -0.999994, 0, 0.999994, 0.00347323, 0.5, 1.1, 0.5)
-tween_time = 0.5
+[node name="Mice" parent="." node_paths=PackedStringArray("navigation") instance=ExtResource("3_2yd4m")]
 navigation = NodePath("../navigation")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.575, -8.96, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 75, 75)
+projection = 1
+size = 23.86
+script = ExtResource("4_fjgng")
