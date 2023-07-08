@@ -6,10 +6,14 @@
 [node name="Mice" instance=ExtResource("1_rjxyw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
 script = ExtResource("2_5o6kk")
+tween_time = 0.3
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/rotation = Quaternion(-1.61132e-07, -3.83647e-08, 0.728266, 0.685295)
 bones/1/rotation = Quaternion(1.52629e-07, -8.23917e-08, -0.0984773, 0.995139)
 bones/2/rotation = Quaternion(0.142244, 0.0700129, 0.421739, 0.892749)
 bones/3/rotation = Quaternion(-0.205339, 0.0947437, 0.392013, 0.891732)
+bones/4/rotation = Quaternion(-0.626811, 0.327273, 0.699178, 0.105592)
+bones/5/rotation = Quaternion(-0.69823, 0.111688, 0.62951, 0.322052)
+bones/7/rotation = Quaternion(-0.238589, 8.9973e-08, 1.05248e-08, 0.971121)
+bones/8/rotation = Quaternion(0.299512, 2.90659e-08, 2.7911e-08, 0.954092)
 bones/9/rotation = Quaternion(0.116412, -9.69629e-09, 1.32581e-08, 0.993201)

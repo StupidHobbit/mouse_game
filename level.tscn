@@ -32,10 +32,11 @@ shadow_enabled = true
 maze = NodePath("../maze")
 
 [node name="Mice" parent="." node_paths=PackedStringArray("navigation") instance=ExtResource("3_2yd4m")]
+tween_time = 0.5
 navigation = NodePath("../navigation")
 
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.575, -8.96, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.015, -6.465, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 75, 75)

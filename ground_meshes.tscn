@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0gsccrjgfe8i"]
+
+[ext_resource type="PackedScene" uid="uid://gwsfykumomeq" path="res://assets/ground.glb" id="1_4wlk1"]
+
+[node name="ground" instance=ExtResource("1_4wlk1")]
+
+[node name="Fence_straight" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Stone" parent="." index="3"]
+visible = false
+
+[node name="Stone_2" parent="." index="4"]
+visible = false
+
+[node name="Stone_3" parent="." index="5"]
+visible = false

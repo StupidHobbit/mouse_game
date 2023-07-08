@@ -4,7 +4,7 @@ extends Node3D
 
 enum States {IDLE, TWEEN}
 
-@export var tween_time := 0.3
+@export var tween_time: float = 1
 @export var grid_size: float = 2
 @export var navigation: Navigation
 @export var cell: Vector2i:
@@ -21,6 +21,8 @@ enum States {IDLE, TWEEN}
 var state := States.IDLE
 
 func _ready():
+	if Engine.is_editor_hint():
+		return
 	update_position()
 	animation_player.animation_finished.connect(on_anim_end)
 

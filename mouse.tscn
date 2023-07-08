@@ -6,5 +6,6 @@
 [node name="mouse" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
 script = ExtResource("1_3ph03")
+tween_time = 0.3
 
 [node name="model" parent="." instance=ExtResource("2_8q50l")]
