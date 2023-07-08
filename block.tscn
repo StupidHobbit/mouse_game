@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://o2j2rw2sqgi6"]
+
+[ext_resource type="Texture2D" uid="uid://c8d8g2yrvt8wc" path="res://assets/textures/Tile_21-128x128.png" id="1_4obr3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hywmv"]
+albedo_texture = ExtResource("1_4obr3")
+uv1_scale = Vector3(11.555, 11.555, 11.555)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbkxm"]
+material = SubResource("StandardMaterial3D_hywmv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8iwe"]
+
+[node name="block" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rbkxm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_y8iwe")

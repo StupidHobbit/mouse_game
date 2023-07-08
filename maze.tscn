@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b60xfwxfn273c"]
+
+[ext_resource type="Script" path="res://maze.gd" id="1_ev2ed"]
+[ext_resource type="MeshLibrary" uid="uid://bhradrq7u04cl" path="res://maze.meshlib" id="2_rvvup"]
+
+[node name="maze" type="Node3D"]
+script = ExtResource("1_ev2ed")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_rvvup")
+cell_size = Vector3(1, 1, 1)

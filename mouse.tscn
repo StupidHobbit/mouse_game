@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn88ok686ledh"]
+
+[ext_resource type="Script" path="res://mouse.gd" id="1_3ph03"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ra2a2"]
+radius = 0.1
+height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wksbx"]
+radius = 0.1
+height = 0.4
+
+[node name="mouse" type="CharacterBody3D"]
+script = ExtResource("1_3ph03")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.127025, 0)
+mesh = SubResource("CapsuleMesh_ra2a2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_wksbx")
