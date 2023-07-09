@@ -14,6 +14,8 @@ var middle_part = preload("res://snake/snake_middle.tscn")
 var tail_part = preload("res://snake/snake_tail.tscn")
 var head_part = preload("res://snake/snake_head.tscn")
 
+var head: Node
+var tail: Node
 
 var queue: Queue = Queue.new()
 
@@ -37,9 +39,10 @@ class PartInfo:
 	func cell_to_position(cell: Vector2i) -> Vector3:
 		return Vector3(cell.x + 0.5, 1, cell.y + 0.5) * grid_size
 
-func add_part(part: PackedScene, direction: Direction, cell: Vector2i):
+func add_part(part: PackedScene, direction: Direction, cell: Vector2i) -> Node:
 	var instanced = create_part(part, direction, cell)
 	queue.add_front(PartInfo.new(instanced, direction, cell))
+	return instanced
 
 func create_part(part: PackedScene, direction: Direction, cell: Vector2i) -> Node3D:
 	var instanced = part.instantiate()
@@ -50,11 +53,16 @@ func head_cell() -> Vector2i:
 	return queue.get_front().cell
 
 func _ready():
-	add_part(tail_part, Direction.RIGHT, Vector2i(0, 0))
+	tail = add_part(tail_part, Direction.RIGHT, Vector2i(0, 0))
 	navigation.add_obstacle(Vector2i(0, 0))
 	add_part(middle_part, Direction.RIGHT, Vector2i(1, 0))
 	navigation.add_obstacle(Vector2i(1, 0))
-	add_part(head_part, Direction.RIGHT, Vector2i(2, 0))
+	head = add_part(head_part, Direction.RIGHT, Vector2i(2, 0))
+	
+	head.get_node("AnimationPlayer").animation_finished.connect(on_head_animation_finish)
+	on_head_animation_finish("")
+	tail.get_node("AnimationPlayer").animation_finished.connect(on_tail_animation_finish)
+	on_tail_animation_finish("")
 
 func next_turn():
 	var head_info: PartInfo = queue.get_front()
@@ -91,6 +99,7 @@ func move(direction: Direction):
 	var head_info: PartInfo = queue.get_front()
 	var new_head_cell = head_info.cell + direction_to_offset[direction]
 	if new_head_cell == mouse.cell or head_info.cell == mouse.cell:
+		head.get_node("AnimationPlayer").play("Bite_snake")
 		mouse.kill()
 	else:
 		move_tail()
@@ -102,7 +111,7 @@ func move(direction: Direction):
 	navigation.add_obstacle(head_info.cell)
 	queue.add_front(PartInfo.new(head_info.node, direction, new_head_cell))
 	head_info.node = new_part
-	head_info.direction = direction
+	head_info.direction = direction	
 	head_info.setup_part()
 	if part_to_add == angle_part:
 		head_info.node.rotation = convert_directions_to_angle_part_rotation(neck_info.direction, direction)
@@ -120,6 +129,14 @@ func move_tail():
 func convert_directions_to_angle_part_rotation(direction_from: Direction, direction_to: Direction) -> Vector3:
 	return directions_to_angle_part_rotation.get([direction_from, direction_to])
 
+func on_head_animation_finish(anim_name: String):
+	head.get_node("AnimationPlayer").play(head_idle_animations.pick_random())
+
+func on_tail_animation_finish(anim_name: String):
+	tail.get_node("AnimationPlayer").play(tail_idle_animations.pick_random())
+
+const head_idle_animations = ["Idle_snake", "Idle_snake_yawn"]
+const tail_idle_animations = ["Idle_tail", "Idle_tail_strike"]
 
 const direction_to_offset = {
 	Direction.UP: Vector2i(0, -1),

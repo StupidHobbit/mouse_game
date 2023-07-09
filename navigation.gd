@@ -41,7 +41,9 @@ func find_path(from: Vector2i, to: Vector2i) -> PackedVector2Array:
 	return astar.get_point_path(cell_to_id(from), cell_to_id(to))
 
 func add_obstacle(cell: Vector2i):
-	astar.set_point_disabled(cell_to_id(cell), true)
+	var id = cell_to_id(cell)
+	if astar.has_point(id):
+		astar.set_point_disabled(id, true)
 
 func remove_obstacle(cell: Vector2i):
 	astar.set_point_disabled(cell_to_id(cell), false)

@@ -5,6 +5,7 @@ extends Node3D
 class_name Maze
 
 @export var size: Vector2i = Vector2i(10, 10)
+@export var decoration_chance: float = 0.2
 
 @onready var grid_map = $GridMap
 
@@ -18,6 +19,11 @@ func _ready():
 	for i in range(-20, size.x + 20):
 		for j in range(-20, size.y + 20):
 			grid_map.set_cell_item(Vector3i(i, 0, j), grass_light if (i + j) % 2 else grass_dark)
+			
+			if i < -1 or i > size.x or j < -1 or j > size.y:
+				if randf() < decoration_chance:
+					grid_map.set_cell_item(Vector3i(i, 1, j), decorations.pick_random())
+					
 			
 	for i in range(size.x):
 		grid_map.set_cell_item(Vector3i(i, 1, -1), fence_straight)
@@ -44,7 +50,9 @@ func get_walls() -> Array[Vector2i]:
 func _process(delta):
 	pass
 
-const fence_straight = 0
-const fence_angle = 6
-const grass_light = 1
-const grass_dark = 2
+const fence_straight = 2
+const fence_angle = 3
+const grass_light = 0
+const grass_dark = 1
+
+const decorations = [4, 5, 6, 8, 9]

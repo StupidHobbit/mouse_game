@@ -3,3 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bhllvpxoom5xe" path="res://assets/Snake_tail.glb" id="1_h1kf0"]
 
 [node name="Snake_tail" instance=ExtResource("1_h1kf0")]
+
+[node name="Skeleton3D" parent="Tail" index="0"]
+bones/1/rotation = Quaternion(2.68812e-09, 2.16804e-07, 0.0017737, 0.999998)
+bones/2/rotation = Quaternion(1.26544e-09, -2.39116e-09, -0.0148307, 0.99989)
+bones/3/rotation = Quaternion(-2.41413e-09, -1.21195e-07, -0.0185075, 0.999829)

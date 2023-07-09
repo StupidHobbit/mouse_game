@@ -31,14 +31,21 @@ func _ready():
 	animation_player.animation_finished.connect(on_anim_end)
 
 func set_cell(value: Vector2i):
+	cell = value
+	update_position()
 	if tween != null:
 		tween.stop()
 		tween.kill()
-		get_tree().create_timer(.5).timeout.connect(func():
+		
+		var fall_tween = get_tree().create_tween()
+		fall_tween.finished.connect(func():
 			state = States.IDLE
 		)
-	cell = value
-	update_position()
+		var mouse_position = position
+		var sky_position = mouse_position + Vector3(0, 2, 0,)
+		position = sky_position
+		animation_player.play("fall")
+		fall_tween.tween_property(self, "position", mouse_position, 0.54)
 
 func update_position():
 	position = cell_to_position(cell)

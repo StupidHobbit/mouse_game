@@ -12,14 +12,12 @@ func _ready():
 		level.queue_free()
 		load_level()
 	)
+	Tutorial.tutor()
 	load_level()
 	
-
 func load_level():
 	level = level_scene.instantiate()
 	add_child(level)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

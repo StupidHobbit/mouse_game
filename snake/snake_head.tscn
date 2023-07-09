@@ -3,3 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bv7bpsyfn62l4" path="res://assets/Snake_head.glb" id="1_nhs2l"]
 
 [node name="Snake_head" instance=ExtResource("1_nhs2l")]
+
+[node name="Skeleton3D" parent="Head" index="0"]
+bones/1/rotation = Quaternion(1.31078e-07, -5.08746e-08, -0.0747155, 0.997205)
+bones/4/rotation = Quaternion(1.4166e-14, 3.55275e-15, 2.32852e-10, 1)
