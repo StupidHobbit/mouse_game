@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://fldrh13me4be"]
+[gd_scene load_steps=4 format=3 uid="uid://fldrh13me4be"]
 
 [ext_resource type="Script" path="res://mouse_counter.gd" id="1_ddsf4"]
 [ext_resource type="Texture2D" uid="uid://cnk08u5apwb05" path="res://assets/textures/seated-mouse.svg" id="2_wy37f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3pt76"]
+font_size = 75
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2.39, 2.415)
 
 [node name="mouse_counter" type="Control"]
 layout_mode = 3
@@ -13,9 +21,14 @@ size_flags_horizontal = 4
 script = ExtResource("1_ddsf4")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.5
+offset_right = 80.5
+offset_bottom = 106.0
+grow_horizontal = 2
 
 [node name="TextureRect" type="TextureRect" parent="HSplitContainer"]
 layout_mode = 2
@@ -26,3 +39,4 @@ expand_mode = 2
 layout_mode = 2
 text = "0
 "
+label_settings = SubResource("LabelSettings_3pt76")

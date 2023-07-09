@@ -30,3 +30,7 @@ func load_level():
 
 func _process(delta):
 	pass
+
+func _input(event: InputEvent):
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
