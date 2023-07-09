@@ -49,7 +49,6 @@ func kill():
 func cell_to_position(cell: Vector2i) -> Vector3:
 	return Vector3(cell.x + 0.5, 1, cell.y + 0.5) * grid_size
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Engine.is_editor_hint():
 		return

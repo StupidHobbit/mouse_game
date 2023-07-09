@@ -91,7 +91,7 @@ func _process(delta):
 func move(direction: Direction):
 	var head_info: PartInfo = queue.get_front()
 	var new_head_cell = head_info.cell + direction_to_offset[direction]
-	if new_head_cell == mouse.cell:
+	if new_head_cell == mouse.cell or head_info.cell == mouse.cell:
 		mouse.kill()
 	else:
 		move_tail()

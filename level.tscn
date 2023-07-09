@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://df68hmter8bou"]
+[gd_scene load_steps=10 format=3 uid="uid://df68hmter8bou"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_i3dhm"]
 [ext_resource type="PackedScene" uid="uid://b60xfwxfn273c" path="res://maze.tscn" id="1_onbyt"]
 [ext_resource type="PackedScene" uid="uid://80sj7wsfglgg" path="res://navigation.tscn" id="2_5kwwn"]
 [ext_resource type="PackedScene" uid="uid://b1abw4esfogiw" path="res://TBD/tbd_system.tscn" id="2_ubeou"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="4_fjgng"]
+[ext_resource type="PackedScene" uid="uid://fldrh13me4be" path="res://mouse_counter.tscn" id="6_i1dn0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpgn7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -43,3 +44,5 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 projection = 1
 size = 23.86
 script = ExtResource("4_fjgng")
+
+[node name="mouse_counter" parent="." instance=ExtResource("6_i1dn0")]
