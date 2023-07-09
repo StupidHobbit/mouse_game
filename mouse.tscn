@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn88ok686ledh"]
+[gd_scene load_steps=3 format=3 uid="uid://6erh3i8sqtca"]
 
 [ext_resource type="Script" path="res://mouse.gd" id="1_3ph03"]
 [ext_resource type="PackedScene" uid="uid://cvi6rgpkteahw" path="res://assets/Mice.glb" id="2_8q50l"]

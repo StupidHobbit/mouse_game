@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1abw4esfogiw"]
+
+[ext_resource type="Script" path="res://TBD/tbd_system.gd" id="1_rgor6"]
+
+[node name="tbd_system" type="Node"]
+script = ExtResource("1_rgor6")

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://3b4kiln0mpnr"]
+
+[ext_resource type="PackedScene" uid="uid://bhllvpxoom5xe" path="res://assets/Snake_tail.glb" id="1_h1kf0"]
+
+[node name="Snake_tail" instance=ExtResource("1_h1kf0")]

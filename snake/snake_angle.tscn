@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbxwi5jch5541"]
+
+[ext_resource type="PackedScene" uid="uid://biylkntywiyq8" path="res://assets/Snake_angle.glb" id="1_7flpa"]
+
+[node name="Snake_angle" instance=ExtResource("1_7flpa")]

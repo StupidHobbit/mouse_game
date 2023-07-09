@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdueultfufsvr"]
+
+[ext_resource type="Script" path="res://snake/snake.gd" id="1_xee22"]
+
+[node name="snake" type="Node3D"]
+script = ExtResource("1_xee22")
