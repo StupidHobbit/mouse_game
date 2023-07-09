@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdueultfufsvr"]
+[gd_scene load_steps=5 format=3 uid="uid://bdueultfufsvr"]
 
 [ext_resource type="Script" path="res://snake/snake.gd" id="1_xee22"]
+[ext_resource type="AudioStream" uid="uid://0pmp5r3ll3io" path="res://assets/Music/Snake_attak.wav" id="2_5k0hp"]
+[ext_resource type="AudioStream" uid="uid://bcssk43tccehx" path="res://assets/Music/Snake_eats.wav" id="3_a0m7i"]
+[ext_resource type="AudioStream" uid="uid://ukftkfjfd6yv" path="res://assets/Music/Snake_hiss.wav" id="4_20mod"]
 
 [node name="snake" type="Node3D"]
 script = ExtResource("1_xee22")
+
+[node name="deathSoundPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="attackSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5k0hp")
+
+[node name="eatSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_a0m7i")
+
+[node name="idleSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_20mod")

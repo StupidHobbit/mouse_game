@@ -3,6 +3,9 @@ extends Node
 var level_scene = preload("res://level.tscn")
 var level: Node
 
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	WinMenu.pressed_exit.connect(func():
@@ -14,6 +17,12 @@ func _ready():
 	)
 	Tutorial.tutor()
 	load_level()
+	play_music()
+	audio_stream_player_2d.finished.connect(play_music)
+	
+func play_music():
+	audio_stream_player_2d.play(0)
+	
 	
 func load_level():
 	level = level_scene.instantiate()

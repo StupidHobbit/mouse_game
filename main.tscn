@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://5s6d0wefsp44"]
+[gd_scene load_steps=3 format=3 uid="uid://5s6d0wefsp44"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_vtwbx"]
+[ext_resource type="AudioStream" uid="uid://bgsl0i1mknes" path="res://assets/Music/Music.wav" id="2_04v2x"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_vtwbx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_04v2x")
+volume_db = -10.0

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://oxttxaxcik1v"]
+[gd_scene load_steps=5 format=3 uid="uid://oxttxaxcik1v"]
 
 [ext_resource type="PackedScene" uid="uid://cvi6rgpkteahw" path="res://assets/Mice.glb" id="1_rjxyw"]
 [ext_resource type="Script" path="res://mouse.gd" id="2_5o6kk"]
+[ext_resource type="AudioStream" uid="uid://bb8344jpvmo36" path="res://assets/Music/Mouse_dead.wav" id="3_va6uw"]
+[ext_resource type="AudioStream" uid="uid://da4g4lvhvms13" path="res://assets/Music/Mouse_calm.wav" id="4_xtdnc"]
 
 [node name="Mice" instance=ExtResource("1_rjxyw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
@@ -19,3 +21,9 @@ bones/6/rotation = Quaternion(-0.552262, -0.441596, -0.552261, 0.441596)
 bones/7/rotation = Quaternion(0.0786114, 9.21292e-08, -5.84454e-09, 0.996905)
 bones/8/rotation = Quaternion(0.40351, 2.71701e-08, 3.57428e-08, 0.914975)
 bones/9/rotation = Quaternion(0.35392, -1.24831e-08, 3.66197e-08, 0.935276)
+
+[node name="deathSoundPlayer" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("3_va6uw")
+
+[node name="idleSoundPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("4_xtdnc")

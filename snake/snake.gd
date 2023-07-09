@@ -14,6 +14,11 @@ var middle_part = preload("res://snake/snake_middle.tscn")
 var tail_part = preload("res://snake/snake_tail.tscn")
 var head_part = preload("res://snake/snake_head.tscn")
 
+@onready var death_sound_player = $deathSoundPlayer
+@onready var idle_sound_player = $idleSoundPlayer
+@onready var attack_sound_player = $attackSoundPlayer
+@onready var eat_sound_player = $eatSoundPlayer
+
 var head: Node
 var tail: Node
 
@@ -63,6 +68,15 @@ func _ready():
 	on_head_animation_finish("")
 	tail.get_node("AnimationPlayer").animation_finished.connect(on_tail_animation_finish)
 	on_tail_animation_finish("")
+	
+	attack_sound_player.finished.connect(eat_sound_player.play)
+	play_idle_sound()
+
+
+func play_idle_sound():
+	await get_tree().create_timer(randf_range(5, 15)).timeout
+	idle_sound_player.play()
+	call_deferred("play_idle_sound")
 
 func next_turn():
 	var head_info: PartInfo = queue.get_front()
@@ -100,6 +114,7 @@ func move(direction: Direction):
 	var new_head_cell = head_info.cell + direction_to_offset[direction]
 	if new_head_cell == mouse.cell or head_info.cell == mouse.cell:
 		head.get_node("AnimationPlayer").play("Bite_snake")
+		attack_sound_player.play()
 		mouse.kill()
 	else:
 		move_tail()

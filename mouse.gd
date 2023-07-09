@@ -20,6 +20,8 @@ signal killed
 			update_position()
 
 @onready var animation_player = $AnimationPlayer
+@onready var death_sound_player = $deathSoundPlayer
+@onready var idle_sound_player = $idleSoundPlayer
 
 var state := States.IDLE
 var tween: Tween
@@ -29,6 +31,7 @@ func _ready():
 		return
 	update_position()
 	animation_player.animation_finished.connect(on_anim_end)
+	play_idle_sound()
 
 func set_cell(value: Vector2i):
 	cell = value
@@ -52,6 +55,12 @@ func update_position():
 
 func kill():
 	killed.emit()
+	death_sound_player.play()
+
+func play_idle_sound():
+	await get_tree().create_timer(randf_range(5, 15)).timeout
+	idle_sound_player.play()
+	call_deferred("play_idle_sound")
 
 func cell_to_position(cell: Vector2i) -> Vector3:
 	return Vector3(cell.x + 0.5, 1, cell.y + 0.5) * grid_size

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://tutorial.gd" id="1_wak17"]
 
 [node name="tutorial" type="PopupPanel"]
-size = Vector2i(133, 100)
+size = Vector2i(133, 121)
 visible = true
 script = ExtResource("1_wak17")
 
@@ -11,7 +11,7 @@ script = ExtResource("1_wak17")
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 129.0
-offset_bottom = 96.0
+offset_bottom = 117.0
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2

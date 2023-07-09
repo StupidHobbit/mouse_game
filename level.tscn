@@ -32,7 +32,6 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="maze" parent="." instance=ExtResource("1_onbyt")]
-decoration_chance = 0.2
 
 [node name="navigation" parent="." node_paths=PackedStringArray("maze") instance=ExtResource("2_5kwwn")]
 maze = NodePath("../maze")
