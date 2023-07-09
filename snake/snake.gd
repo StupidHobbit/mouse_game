@@ -62,14 +62,13 @@ func next_turn():
 	if len(path) == 0:
 		var free_direction = find_free_direction_near()
 		if free_direction == Direction.UNKNOWN:
-			print("You won")
-			get_tree().quit()
+			WinMenu.turn_on()
 			return
 		move(free_direction)
 		return
 	
 	if len(path) == 1:
-		move(queue.get_front().direction)
+		move(find_free_direction_near())
 		return
 	var next_cell = Vector2i(path[1])
 	var direction = offset_to_direction[next_cell - head_info.cell]

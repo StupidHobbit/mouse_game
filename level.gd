@@ -10,12 +10,20 @@ var snake: Snake
 var mice_scene = preload("res://mice.tscn")
 
 func _ready():
-	spawn_mouse()
+	call_deferred("init")
+
+func init():
+	if not navigation.is_initialised:
+		await navigation.initialised
+	
 	snake = preload("res://snake/snake.tscn").instantiate()
 	snake.navigation = navigation
-	snake.mouse = mice
 	add_child(snake)
+	spawn_mouse()
+	snake.mouse = mice
 	tbd_system.add_object(snake)
+	
+	WinMenu.mouse_counter = mouse_counter
 	
 	tbd_system.init_tbd()
 

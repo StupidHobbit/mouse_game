@@ -1,5 +1,7 @@
 extends Control
 
+class_name MouseCounter 
+
 @onready var label = $HSplitContainer/Label
 
 

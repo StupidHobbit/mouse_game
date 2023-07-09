@@ -5,6 +5,10 @@ class_name Navigation
 @export var maze: Maze
 
 var astar: AStar2D = AStar2D.new()
+var is_initialised: bool = false
+
+signal initialised
+
 
 func _ready():
 	call_deferred("init_walls")
@@ -29,6 +33,9 @@ func init_walls():
 	
 	for w in maze.get_walls():
 		add_obstacle(w)
+	is_initialised = true
+	initialised.emit()
+
 		
 func find_path(from: Vector2i, to: Vector2i) -> PackedVector2Array:
 	return astar.get_point_path(cell_to_id(from), cell_to_id(to))
